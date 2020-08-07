@@ -16,14 +16,6 @@ def reconstruct_trip(tickets, length):
     route[0] = ht["NONE"]
     for ix in range(1, len(route)):
         route[ix] = ht[route[ix-1]]
-    # for ix in route:
-    #     route[ix-1] = list(ht)[ix]
-    # for ticket in ht:
-    #     if ht[ticket] == None:
-    #         route[0] == ticket
-    #     if ticket == None:
-    #         final = ht[ticket]
-        
 
     return route
 
