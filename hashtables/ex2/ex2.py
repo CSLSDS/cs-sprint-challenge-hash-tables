@@ -9,6 +9,40 @@ def reconstruct_trip(tickets, length):
     """
     YOUR CODE HERE
     """
-    # Your code here
+    route = [None] * length
+    ht = {}
+    for ticket in tickets:
+        ht[ticket.source] = ticket.destination
+    route[0] = ht["NONE"]
+    for ix in range(1, len(route)):
+        route[ix] = ht[route[ix-1]]
+    # for ix in route:
+    #     route[ix-1] = list(ht)[ix]
+    # for ticket in ht:
+    #     if ht[ticket] == None:
+    #         route[0] == ticket
+    #     if ticket == None:
+    #         final = ht[ticket]
+        
 
     return route
+
+ticket_1 = Ticket("PIT", "ORD")
+ticket_2 = Ticket("XNA", "SAP")
+ticket_3 = Ticket("SFO", "BHM")
+ticket_4 = Ticket("FLG", "XNA")
+ticket_5 = Ticket("NONE", "LAX")
+ticket_6 = Ticket("LAX", "SFO")
+ticket_7 = Ticket("SAP", "SLC")
+ticket_8 = Ticket("ORD", "NONE")
+ticket_9 = Ticket("SLC", "PIT")
+ticket_10 = Ticket("BHM", "FLG")
+
+tickets = [ticket_1, ticket_2, ticket_3, ticket_4, ticket_5,
+            ticket_6, ticket_7, ticket_8, ticket_9, ticket_10]
+
+expected = ["LAX", "SFO", "BHM", "FLG", "XNA", "SAP",
+            "SLC", "PIT", "ORD", "NONE"]
+result = reconstruct_trip(tickets, 10)
+print(result)
+print(expected)
