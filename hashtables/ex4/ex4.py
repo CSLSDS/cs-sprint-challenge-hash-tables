@@ -2,7 +2,14 @@ def has_negatives(a):
     """
     YOUR CODE HERE
     """
-    # Your code here
+    result = []
+    isneg = {}
+    for item in a:
+        if item < 0:
+            isneg[item] = True
+    for item in a:
+        if item >= 0 and -item in isneg:
+            result.append(item)
 
     return result
 
